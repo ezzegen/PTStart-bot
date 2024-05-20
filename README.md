@@ -13,38 +13,40 @@
 
 Для просмотра доступных команд `/help`.
 ## Installation
-Python 3.10
 
-1. Установка зависимостей:
+1. Создание файла .env
+Обратите внимание, что в данном случае прописаны стандартные значения DB_REPL_USER и DB_REPL_PASSWORD, для тестирования работы репликации менять их не рекомендуется (иначе придется менять значения в init.sql) 
 ```
-pip install -r requirements.txt
-```
-2. Создание файла .env
-
-```
-HOST = your_hostname
-PORT = your_port
-USER = your_username
-PASSWORD = your_password
-
 TOKEN = your_token
 
-PG_USER = postgres
-PG_PASSWORD = your_password
-PG_HOST = your_ip_addr_host
-PG_PORT = 5432 or your
-DB = name_db
+DB_USER = postgres
+DB_PASSWORD = your_password
+DB_HOST = db
+DB_PORT = 5432
+DB_DATABASE = your DB name
+
+RM_HOST = your host for monitoring
+RM_USER = user name
+RM_PASSWORD = your_password
+RM_PORT = 22
+
+DB_REPL_USER = repl_user
+DB_REPL_PASSWORD = Qq12345
+DB_REPL_HOST = db_repl
+DB_REPL_PORT = 5432
+```
+2. Установка необходимых утилит на Linux-серверах.
+```
+Убедитесь, что на хосте для мониторинга установлен сервис ssh и утилита mpstat,
+а на хосте для развертывания приложения установлены docker, docker-compose!
+```
+3. Сборка и запуск образов
 
 ```
-
-3. Создание базы данных
-
+docker-compose up --build
 ```
-CREATE DATABASE name_db;
-```
-
 ## Running the app
 
 ```
-python main.py
+docker-compose start
 ```
