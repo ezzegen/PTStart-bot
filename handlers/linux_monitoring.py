@@ -16,7 +16,7 @@ commands_dict: Dict[str, str] = {
     '/get_ss': ['ss -tuln', '*** Информация об используемых портах ***'],
     '/get_apt_list': ["apt list  | awk '{print $1}'", '*** Информация об установленных пакетах ***'],
     '/get_services': [f'sudo service --status-all | grep "+"', '*** Информация о запущенных сервисах ***'],
-    '/get_repl_logs': ['tail -n 50 /var/log/postgresql/postgresql-15-main.log | grep "repl"', '*** Логи репликации ***']
+    '/get_repl_logs': ['tail -n 50 /var/log/postgresql/postgresql-14-main.log | grep "repl"', '*** Логи репликации ***']
 }
 
 
